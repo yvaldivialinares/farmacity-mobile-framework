@@ -1,0 +1,172 @@
+{
+  "app": "FARMACITY",
+  "last_updated": "2026-03-23",
+  "steps": {
+    "welcome-screen": [
+      "tap Login with user button",
+      "tap Login with code button",
+      "verify Greeting text is visible",
+      "verify Greeting text displays {string}"
+    ],
+    "user-login-screen": [
+      "type {valid_email} in Email input",
+      "type {valid_password} in Password input",
+      "type {invalid_password} in Password input",
+      "tap Login button",
+      "tap Show password toggle",
+      "tap Password recovery button",
+      "tap Register button",
+      "verify Login button is disabled",
+      "verify password is visible",
+      "verify password is masked"
+    ],
+    "code-login-screen": [
+      "type {valid_email} in Email input",
+      "type {invalid_email_format} in Email input",
+      "tap Submit button",
+      "tap Back button",
+      "verify Submit button is disabled",
+      "verify Submit button is enabled"
+    ],
+    "code-verification-screen": [
+      "type {valid_code} in Code input",
+      "type {first_name} in First name input",
+      "type {last_name} in Last name input",
+      "select {gender} in Gender selector",
+      "select {date_of_birth} in Date of birth picker",
+      "tap Continue button",
+      "tap Resend code link",
+      "tap Back button",
+      "verify Continue button is disabled",
+      "verify Continue button is enabled",
+      "verify screen title is visible",
+      "verify instruction text contains {string}"
+    ],
+    "password-recovery-screen": [
+      "type {valid_email} in Email input",
+      "type {invalid_email_format} in Email input",
+      "tap Recover password button",
+      "tap Back button",
+      "verify Recover password button is disabled",
+      "verify Recover password button is enabled",
+      "verify screen title is visible"
+    ],
+    "home-screen": [
+      "verify greeting text is visible",
+      "verify Inicio tab is visible",
+      "verify Pedidos tab is visible",
+      "verify Comprar medicamentos tab is visible",
+      "verify Mi perfil tab is visible",
+      "verify Menu tab is visible",
+      "tap View all categories button",
+      "tap Prescriptions CTA button",
+      "tap Completar perfil button",
+      "tap Inicio tab",
+      "tap Pedidos tab",
+      "tap Comprar medicamentos tab",
+      "tap Mi perfil tab",
+      "tap Menu tab",
+      "tap category {string}",
+      "verify search bar is visible"
+    ],
+    "registration-screen": [
+      "type {valid_email} in Email input",
+      "type {invalid_email_format} in Email input",
+      "tap Continue button",
+      "tap Back button",
+      "verify Continue button is disabled",
+      "verify Continue button is enabled",
+      "verify screen title is visible"
+    ]
+  },
+  "methods": {
+    "WelcomePage": [
+      "tapLoginWithUserButton()",
+      "tapLoginWithCodeButton()",
+      "isGreetingTextVisible()",
+      "getGreetingText()"
+    ],
+    "UserLoginPage": [
+      "enterEmail(email)",
+      "enterPassword(password)",
+      "tapLoginButton()",
+      "togglePasswordVisibility()",
+      "tapPasswordRecoveryButton()",
+      "tapRegisterButton()",
+      "loginWith(email, password)",
+      "isLoginButtonEnabled()",
+      "isPasswordVisible()",
+      "isPasswordMasked()"
+    ],
+    "CodeLoginPage": [
+      "enterEmail(email)",
+      "tapSubmitButton()",
+      "tapBackButton()",
+      "isSubmitButtonEnabled()",
+      "requestAccessCode(email)"
+    ],
+    "CodeVerificationPage": [
+      "enterCode(code)",
+      "enterFirstName(name)",
+      "enterLastName(name)",
+      "selectGender(gender)",
+      "selectDateOfBirth(dob)",
+      "tapContinueButton()",
+      "tapResendCodeLink()",
+      "tapBackButton()",
+      "isContinueButtonEnabled()",
+      "isScreenTitleVisible()",
+      "isResendConfirmationVisible()",
+      "completeRegistration(code, firstName, lastName, gender, dob)"
+    ],
+    "PasswordRecoveryPage": [
+      "enterEmail(email)",
+      "tapRecoverPasswordButton()",
+      "tapBackButton()",
+      "isRecoverPasswordButtonEnabled()",
+      "isScreenTitleVisible()",
+      "isRecoveryConfirmationVisible()",
+      "requestPasswordRecovery(email)"
+    ],
+    "RegistrationPage": [
+      "enterEmail(email)",
+      "tapContinueButton()",
+      "tapBackButton()",
+      "isContinueButtonEnabled()",
+      "isScreenTitleVisible()",
+      "submitRegistrationEmail(email)"
+    ],
+    "HomePage": [
+      "isGreetingVisible()",
+      "tapViewAllCategoriesButton()",
+      "tapPrescriptionsButton()",
+      "tapCompletarPerfilButton()",
+      "tapCategoryCard(categoryName)",
+      "isSearchBarVisible()"
+    ],
+    "BottomNavPage": [
+      "tapInicioTab()",
+      "tapPedidosTab()",
+      "tapComprarMedicamentosTab()",
+      "tapMiPerfilTab()",
+      "tapMenuTab()",
+      "isInicioTabVisible()",
+      "isPedidosTabVisible()",
+      "isComprarMedicamentosTabVisible()",
+      "isMiPerfilTabVisible()",
+      "isMenuTabVisible()"
+    ]
+  },
+  "variables": [
+    "valid_email",
+    "valid_password",
+    "invalid_password",
+    "invalid_email_format",
+    "valid_code",
+    "first_name",
+    "last_name",
+    "gender",
+    "date_of_birth",
+    "user_first_name"
+  ]
+}

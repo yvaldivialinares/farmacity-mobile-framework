@@ -1,0 +1,12 @@
+# Copy to test-data.properties and fill in your values. DO NOT commit test-data.properties.
+
+valid_email=your.email@example.com
+valid_password=YourPassword123
+invalid_password=x
+user_first_name=YourFirstName
+invalid_email_format=notanemail@
+valid_code=000000
+first_name=Juan
+last_name=Pérez
+gender=Masculino
+date_of_birth=01/01/1990

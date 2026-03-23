@@ -1,0 +1,103 @@
+{
+  "app": "FARMACITY",
+  "screens": [
+    {
+      "id": "welcome-screen",
+      "description": "Entry screen displayed when the app is first opened, offering two authentication paths: credential-based or access-code-based login.",
+      "entry_point": true,
+      "mapped": true,
+      "reached_from": [],
+      "leads_to": [
+        { "screen": "user-login-screen", "via": "Ingresar con usuario", "mapped": true },
+        { "screen": "code-login-screen", "via": "Ingresar con código", "mapped": true }
+      ]
+    },
+    {
+      "id": "code-login-screen",
+      "description": "Code-based login screen where the user enters their registered email to receive an access code by email. Submit button is disabled until a value is entered. Navigates to code-verification-screen on submission.",
+      "entry_point": false,
+      "mapped": true,
+      "reached_from": [
+        { "screen": "welcome-screen", "via": "Ingresar con código" }
+      ],
+      "leads_to": [
+        { "screen": "code-verification-screen", "via": "Recibir código por email", "condition": "valid email entered", "mapped": true },
+        { "screen": "welcome-screen", "via": "Back button", "mapped": true }
+      ]
+    },
+    {
+      "id": "code-verification-screen",
+      "description": "Combined code verification and profile creation screen. User enters the 6-digit code received by email and fills in required personal data (name, last name, gender, date of birth) to create their Farmacity account. Continue button is disabled until all required fields are completed. Includes a resend code link.",
+      "entry_point": false,
+      "mapped": true,
+      "reached_from": [
+        { "screen": "code-login-screen", "via": "Recibir código por email", "condition": "valid email entered" }
+      ],
+      "leads_to": [
+        { "screen": "home-screen", "via": "Continuar", "condition": "valid code + required profile fields filled", "mapped": false, "note": "destination TBC — requires real backend response" },
+        { "screen": "code-login-screen", "via": "Back button", "mapped": true }
+      ]
+    },
+    {
+      "id": "user-login-screen",
+      "description": "Credential-based login screen with email and password fields, password visibility toggle, and links to password recovery and registration.",
+      "entry_point": false,
+      "mapped": true,
+      "reached_from": [
+        { "screen": "welcome-screen", "via": "Ingresar con usuario" }
+      ],
+      "leads_to": [
+        { "screen": "home-screen", "via": "Iniciar sesión", "condition": "valid credentials", "mapped": true },
+        { "screen": "password-recovery-screen", "via": "¿Olvidaste tu contraseña?", "mapped": true },
+        { "screen": "registration-screen", "via": "Registrarme", "mapped": true }
+      ]
+    },
+    {
+      "id": "password-recovery-screen",
+      "description": "Password recovery screen where the user enters their registered email to receive a reset link. Submit button disabled until email field is non-empty. No resource-id on submit button ? uses content-desc only.",
+      "entry_point": false,
+      "mapped": true,
+      "reached_from": [
+        { "screen": "user-login-screen", "via": "¿Olvidaste tu contraseña?" }
+      ],
+      "leads_to": [
+        { "screen": "password-recovery-confirmation-screen", "via": "Recuperar contraseña", "condition": "valid email entered", "mapped": false, "note": "destination TBC — requires real backend response" },
+        { "screen": "user-login-screen", "via": "Back button", "mapped": true }
+      ]
+    },
+    {
+      "id": "registration-screen",
+      "description": "Step 1 of registration flow. User enters their email to begin account creation. Continue button disabled until email is entered. Uses header-back-text resource-id for back navigation (different from icon-button pattern on other screens). Likely leads to code-verification-screen via email code delivery.",
+      "entry_point": false,
+      "mapped": true,
+      "reached_from": [
+        { "screen": "user-login-screen", "via": "Registrarme" }
+      ],
+      "leads_to": [
+        { "screen": "code-verification-screen", "via": "Continuar", "condition": "valid new email entered", "mapped": true, "note": "destination TBC — likely via email code delivery" },
+        { "screen": "user-login-screen", "via": "Back button (header-back-text)", "mapped": true }
+      ]
+    },
+    {
+      "id": "home-screen",
+      "description": "Main authenticated dashboard. Vertically scrollable screen (home-scroll-view) with personalized greeting, profile completion banner, featured categories horizontal carousel, prescription medications CTA, banking promotions carousel, nearest pharmacy location, and persistent bottom navigation bar (5 tabs: Inicio, Pedidos, Comprar medicamentos, Mi perfil, Menú). Content in carousels/promotions is server-driven and dynamic.",
+      "entry_point": false,
+      "mapped": true,
+      "reached_from": [
+        { "screen": "user-login-screen", "via": "Iniciar sesión", "condition": "valid credentials" }
+      ],
+      "leads_to": [
+        { "screen": "categories-screen", "via": "Ver categorías button", "mapped": false },
+        { "screen": "category-detail-screen", "via": "Category card tap", "condition": "any category card", "mapped": false },
+        { "screen": "prescriptions-screen", "via": "Ver todas mis recetas", "mapped": false },
+        { "screen": "promotion-detail-screen", "via": "Promotion card tap", "condition": "any promotion card", "mapped": false },
+        { "screen": "profile-completion-screen", "via": "Completar perfil", "mapped": false },
+        { "screen": "search-results-screen", "via": "Search bar tap", "mapped": false },
+        { "screen": "orders-screen", "via": "Pedidos bottom nav tab", "mapped": false },
+        { "screen": "medications-screen", "via": "Comprar medicamentos bottom nav tab", "mapped": false },
+        { "screen": "profile-screen", "via": "Mi perfil bottom nav tab", "mapped": false },
+        { "screen": "menu-screen", "via": "Menú bottom nav tab", "mapped": false }
+      ]
+    }
+  ]
+}

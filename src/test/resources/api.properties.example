@@ -1,0 +1,5 @@
+# Copy to api.properties and fill in your values. DO NOT commit api.properties.
+
+api.base.url=https://api.farmacity.com.ar
+api.timeout.seconds=30
+api.auth.token=your_bearer_token_here

@@ -1,0 +1,13 @@
+# Copy to appium.properties and fill in your values. DO NOT commit appium.properties.
+
+appium.server.url=http://localhost:4723
+appium.platform.name=Android
+appium.device.name=<your-device-udid-or-emulator-name>
+appium.automation.name=UiAutomator2
+appium.app.package=ar.com.farmacity.app
+appium.app.activity=.MainActivity
+appium.no.reset=true
+appium.full.reset=false
+appium.new.command.timeout=60
+appium.implicit.wait=0
+appium.explicit.wait=15

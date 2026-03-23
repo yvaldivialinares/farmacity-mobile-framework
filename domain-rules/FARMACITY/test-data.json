@@ -1,0 +1,21 @@
+{
+  "app": "FARMACITY",
+  "last_updated": "2026-03-23",
+  "notes": "Params added incrementally as screens are mapped. Fill <FILL_ME> values before running tests that require backend authentication.",
+  "credentials": {
+    "valid_email": "<FILL_ME: email address of a registered Farmacity account>",
+    "valid_password": "<FILL_ME: password for the registered account above>",
+    "invalid_password": "x",
+    "user_first_name": "<FILL_ME: first name of the account associated with valid_email — shown in home-screen greeting>"
+  },
+  "validation_inputs": {
+    "invalid_email_format": "notanemail@"
+  },
+  "registration": {
+    "valid_code": "<FILL_ME: 6-digit access code received by email — must be retrieved fresh before each test run>",
+    "first_name": "Juan",
+    "last_name": "Pérez",
+    "gender": "<FILL_ME: one of the available gender options in the selector — inspect dropdown to confirm values>",
+    "date_of_birth": "01/01/1990"
+  }
+}

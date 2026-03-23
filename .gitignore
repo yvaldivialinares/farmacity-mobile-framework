@@ -1,0 +1,33 @@
+# Maven build output
+target/
+*.class
+
+# Test data — never commit credentials
+src/test/resources/test-data.properties
+src/test/resources/api.properties
+
+# Keep example templates in repo
+!src/test/resources/test-data.properties.example
+!src/test/resources/api.properties.example
+
+# Appium server properties (local-only)
+src/test/resources/appium.properties
+!src/test/resources/appium.properties.example
+
+# Allure results and reports
+allure-results/
+allure-report/
+
+# IDE
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Cucumber HTML reports
+target/cucumber-reports/
