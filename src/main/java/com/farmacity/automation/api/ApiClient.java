@@ -18,7 +18,7 @@ import java.util.Map;
  */
 public class ApiClient {
 
-    private final RequestSpecification spec;
+    private RequestSpecification spec;
 
     public ApiClient() {
         spec = RestAssured
