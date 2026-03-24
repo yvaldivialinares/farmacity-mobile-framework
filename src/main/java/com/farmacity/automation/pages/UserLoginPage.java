@@ -11,7 +11,7 @@ import org.openqa.selenium.By;
  * Locator notes:
  *  - Email and Password inputs have stable resource-ids (primary) with XPath fallbacks.
  *  - Login button and navigation links use content-desc (accessibility id).
- *  - Show password toggle uses content-desc "Show password".
+ *  - Show/Hide password toggle: content-desc flips between "Show password" and "Hide password".
  */
 public class UserLoginPage extends BasePage {
 
@@ -19,13 +19,16 @@ public class UserLoginPage extends BasePage {
     private final By emailInput      = By.id("correoElectronico-input");
     private final By emailInputXpath = By.xpath("//android.widget.EditText[@resource-id='correoElectronico-input']");
 
-    // --- Password input ---
-    private final By passwordInput      = By.id("password-input");
-    private final By passwordInputXpath = By.xpath("//android.widget.EditText[@resource-id='password-input']");
+    // --- Password input (resource-id casing varies by build; cover both) ---
+    private final By passwordInput      = By.id("Password-input");
+    private final By passwordInputXpath = By.xpath(
+            "//android.widget.EditText[@resource-id='Password-input' or @resource-id='password-input']");
 
-    // --- Show password toggle ---
-    private final By showPasswordToggle      = By.xpath("//*[@content-desc='Show password']");
-    private final By showPasswordToggleXpath = By.xpath("//android.widget.Button[@content-desc='Show password']");
+    // --- Password visibility toggle (label depends on current mask state) ---
+    private final By passwordVisibilityToggle = By.xpath(
+            "//android.widget.Button[@content-desc='Show password' or @content-desc='Hide password']");
+    private final By passwordVisibilityToggleFallback = By.xpath(
+            "//*[@content-desc='Show password' or @content-desc='Hide password']");
 
     // --- Login button ---
     private final By loginButton      = By.xpath("//*[@content-desc='Iniciar sesi\u00f3n']");
@@ -57,7 +60,7 @@ public class UserLoginPage extends BasePage {
     }
 
     public void togglePasswordVisibility() {
-        tap(showPasswordToggle, showPasswordToggleXpath);
+        tap(passwordVisibilityToggle, passwordVisibilityToggleFallback);
     }
 
     public void tapPasswordRecoveryButton() {

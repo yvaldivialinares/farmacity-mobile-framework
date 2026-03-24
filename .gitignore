@@ -17,6 +17,10 @@ src/test/resources/appium.properties
 # Allure results and reports
 allure-results/
 allure-report/
+.allure/
+
+# IDE / plugins (e.g. BrowserStack plugin writes logs/browserstack-plugin.log)
+logs/
 
 # IDE
 .idea/
